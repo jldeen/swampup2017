@@ -1,4 +1,4 @@
-node() {
+node {
    def artServer = Artifactory.server('jfrogjd')
    artServer.credentialsId='jfrogjd.jfrog.io'
    def buildInfo = Artifactory.newBuildInfo()
