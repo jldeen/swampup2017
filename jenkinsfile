@@ -21,7 +21,6 @@ dir('swampupdemo') {
 
 stage('Azure Login') {
     // az creds
-
         withCredentials([usernamePassword(credentialsId: 'spn_pw', passwordVariable: 'pass', usernameVariable: 'spn'), string(credentialsId: 'tenant', variable: 'tenantId')]){
 
     // az login
@@ -31,12 +30,8 @@ stage('Azure Login') {
     env.azDockerHost=':2375'
     env.serviceName='containerservice-swampupdemo'
     env.resource='swampupdemo'
-    
     env.masterFQDN = sh(script: "az acs show -n ${env.serviceName} -g ${env.resource} | jq -r '.masterProfile.fqdn'", returnStdout: true).trim()
     env.agentsFQDN = sh(script: "az acs show -n ${env.serviceName} -g ${env.resource} | jq -r '.agentPoolProfiles[0].fqdn'", returnStdout: true).trim()
-
-    // env.masterFQDN = sh returnStdout: true, script: "az acs show -n ${env.serviceName} -g ${env.resource} | jq -r '.masterProfile.fqdn'"
-    // env.agentsFQDN = sh returnStdout: true, script: "az acs show -n ${env.serviceName} -g ${env.resource} | jq -r '.agentPoolProfiles[0].fqdn'"
 
     sh "echo masterFQDN is ${env.masterFQDN}"
     sh "echo agentsFQDN is ${env.agentsFQDN}"
