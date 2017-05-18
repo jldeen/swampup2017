@@ -76,9 +76,9 @@ stage('Azure Login') {
             sh "echo 'applying build properties' && curl -i -u ${uname}:${pw} -XPUT -d '' https://jfrogjd.jfrog.io/jfrogjd/api/storage/docker-prod/swampupdemo/${env.BUILD_NUMBER}?properties=artifactory.refersToVersion=${env.BUILD_NUMBER}\\;azure.masterFQDN=${env.masterFQDN}\\;azure.agentsFQDN=${env.agentsFQDN} && echo 'artifactory.refersToVersion, azure.masterFQDN, azure.agentsFQDN properties applied'"
             // Latest Properties
             sh "echo 'applying latest tag properties' && curl -i -u ${uname}:${pw} -XPUT -d '' https://jfrogjd.jfrog.io/jfrogjd/api/storage/docker-prod/swampupdemo/latest?properties=artifactory.refersToVersion=${env.BUILD_NUMBER}\\;azure.masterFQDN=${env.masterFQDN}\\;azure.agentsFQDN=${env.agentsFQDN} && echo 'artifactory.refersToVersion, azure.masterFQDN, azure.agentsFQDN properties applied'"
+           }
+         }
+       }
+     }
    }
-   }
-}
-}
-}
-}
+ }
