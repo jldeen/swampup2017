@@ -1,4 +1,4 @@
-FROM node:latest
+FROM jfrogjd-docker-prod.jfrog.io/node:latest
 
 # Create app directory
 RUN mkdir -p /usr/src/app
