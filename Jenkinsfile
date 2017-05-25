@@ -41,7 +41,7 @@ stage('Azure Login') {
    }
 
    // Build and Deploy to Artifactory 'stage'... 
-   stage('Build and Deploy') {
+   stage('Build and Push to Artifactory') {
         def tagName='jfrogjd-docker-prod.jfrog.io/swampupdemo:'+env.BUILD_NUMBER
         docker.build(tagName)
         def artDocker= Artifactory.docker(uname, pw)
